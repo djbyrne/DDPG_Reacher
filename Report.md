@@ -19,6 +19,9 @@ The observation space consists of 33 variables corresponding to position, rotati
 Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
 # DDPG
+
+I chose to go with DDPG as DeepMinds paper shows that it has very good results in a similar reacher environment https://arxiv.org/pdf/1801.00690.pdf
+
 DQN introduces a lot of changes to the traditional Q learning algorithm and isn't just replacing the Q table with a neural network.
 As described in Deep Minds groundbreaking paper [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/pdf/1312.5602.pdf) there are 
 several advancements that make this algorithm work. Below I will go through the core techniques used to successfully implement the DQN algorithm.
@@ -31,9 +34,9 @@ This base implementation of this project uses a simple 2 layer multi layer perce
 
 | Layers           |Parameters           |
 |:-------------:| :-------------:| 
-| Dense Layer| 16| 
+| Dense Layer| 1000| 
 | ReLU activation| NA|   
-| Dense Layer| 32| 
+| Dense Layer| 1000| 
 | ReLU activation| NA| 
 |Dense Layer|4| 
 
