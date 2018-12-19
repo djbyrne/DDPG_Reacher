@@ -8,7 +8,7 @@
 
 ### Introduction
 
-This experiment implements the DDPG algorithm to train a mechanical arm to reach for a moving target inside the unity ML-Agents virtual environment[Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher)environment.
+This experiment implements the DDPG algorithm to train a mechanical arm to reach for a moving target inside the unity ML-Agents virtual [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher)environment.
 
 ![Trained Agent][image1]
 
