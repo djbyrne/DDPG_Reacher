@@ -8,13 +8,20 @@
 
 ### Introduction
 
-This experiment implements the DDPG algorithm to train a mechanical arm to reach for a moving target inside the unity ML-Agents virtual [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher)environment.
+This experiment implements the DDPG algorithm to train a mechanical arm to reach for a moving target inside the unity ML-Agents virtual [Reacher](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Learning-Environment-Examples.md#reacher) environment. In this environment, a double-jointed arm can move to target locations.
 
 ![Trained Agent][image1]
 
-In this environment, a double-jointed arm can move to target locations. A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible.
+### Rewards
 
-The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
+A reward of +0.1 is provided for each step that the agent's hand is in the goal location. Thus, the goal of your agent is to maintain its position at the target location for as many time steps as possible.
+
+### State Space
+
+The observation space consists of 33 variables corresponding to position, rotation, velocity, and angular velocities of the arm. 
+
+### Action Space
+Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
 ### Solving the Environment
 The environment is considered solved when the average score of all agents in the environment (in this case 20) for a period of 100 episodes is 30 or above.
