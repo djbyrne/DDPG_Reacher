@@ -81,27 +81,9 @@ I began to suspect that the agent was unable to accurately assign credit correct
 
 # Results
 
-The training portion of the notebook contains the main game loop iterating through the environment and utilising our agent. As with most machine learning problems, a lot of the improvements come from hyper parameter tuning. This can often taken longer than building the actual algorithm itself. Unfortunately I couldn't dedicate too much time to hyper parameter tuning and was only able to test a few changes for each type of model. Below are the parameters that I experimented with. Each parameter change was added in and tested individually in order to identify which parameter changes gave the best results.
-
-| Parameter | Params 1 |  Params 2  |
-|:-------------:| :-------------:| :-------------:| 
-|Layer 1    | 16     |   32     |
-|Layer 2    | 32     |   64     |
-|Learning Rate    | 0.0005     |   0.0001     |
-|Batch Size    | 64     |   32     |
-|Buffer Size    | 100000     |  200000     |
-
-
-The experiments showed that the hyperparameters didnt make a huge improvement, with most models reaching a stable score of 13 within 800 episodes and a score ~15-17 after 2000. The variation on the agents final score was mostly influenced by the type of model used. The hyperparameters mainly effected how quickly the agent could reach a score of 13+. For example, the base DQN with the initial set of parameters learned to get a score of 13+ within ~450 episodes where as the same model with the second set of parameters took ~700 episodes. Both of these models achieved a final average score of 16 after 2000 episodes and could achieve the max score of 25. I believe that the model is capable achieving a better highscore with correct hyperparameter tuning and more training episodes. Below is the training graph of the base DQN agent running with the 2nd set of hyperparameters.
-
-![DQN_2000_Episodes](/images/dqn_2000.png)
-
-
-# Results
-
 I conclusion, DDPG was successfully able to converge on an optimal policy that was capable of reaching and maintaining an average score of 39.4 . This required some tweaking of the update parameters and large network than described in literature but achieved good results. The full results and hyperparameters used are shown below. As you can see from the graph, the agent is slow to learn at first, but after ~40 episodes the learn improves drastically. Based on this I believe that other architectures, such as the one described in the DDPG paper, may work equally well but I simply did let the agent train for long enough. Nonetheless, I am very happy with the results of my agent.
 
-![DDDQN](/images/dueling_double_17.png)
+![DDDQN](/images/ddpg_40.png)
 
 | Parameter | Value |  
 |:-------------:| :-------------:|
