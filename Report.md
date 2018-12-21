@@ -8,7 +8,7 @@ The Reacher environment provided an interesting challenge and required several s
 
 # The Environment
 
-![Trained Agent][image1]
+![Trained Agent](https://user-images.githubusercontent.com/10624937/43851024-320ba930-9aff-11e8-8493-ee547c6af349.gif)
 
 The environment used for this project was built using the Unity [ml-agents](https://github.com/Unity-Technologies/ml-agents) framework.
 
