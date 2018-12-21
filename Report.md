@@ -22,7 +22,7 @@ Each action is a vector with four numbers, corresponding to torque applicable to
 
 I chose to go with DDPG as DeepMinds paper shows that it has very good results in a similar reacher environment https://arxiv.org/pdf/1801.00690.pdf . Here the paper looks at A3C, DDPG and D4PG. The results shows that D4PG drastically outperforms A3C and was followed closely by DDPG.
 
-![Paper Results][https://github.com/djbyrne/DDPG_Reacher/blob/master/images/research.png]
+![Paper Results](images/research.png)
 
 
 DQN introduces a lot of changes to the traditional Q learning algorithm and isn't just replacing the Q table with a neural network.
