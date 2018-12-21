@@ -1,6 +1,6 @@
 # Intro
 
-This project looks at implementing the Deep Deterministic Policy Gradient (DDPG) algorithm in order to solve Reacher environment.
+This project looks at implementing the Deep Deterministic Policy Gradient (DDPG) algorithm in order to solve the Reacher environment.
 
 This implementation used the ddpg pendulum example from the Udacity deep reinforcment learning repository as a foundation and was adapted to suite the Reacher environment. This project can be found [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/ddpg-pendulum)
 
@@ -20,7 +20,10 @@ Each action is a vector with four numbers, corresponding to torque applicable to
 
 # DDPG
 
-I chose to go with DDPG as DeepMinds paper shows that it has very good results in a similar reacher environment https://arxiv.org/pdf/1801.00690.pdf
+I chose to go with DDPG as DeepMinds paper shows that it has very good results in a similar reacher environment https://arxiv.org/pdf/1801.00690.pdf . Here the paper looks at A3C, DDPG and D4PG. The results shows that D4PG drastically outperforms A3C and was followed closely by DDPG.
+
+![Paper Results][https://github.com/djbyrne/DDPG_Reacher/blob/master/images/research.png]
+
 
 DQN introduces a lot of changes to the traditional Q learning algorithm and isn't just replacing the Q table with a neural network.
 As described in Deep Minds groundbreaking paper [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/pdf/1312.5602.pdf) there are 
