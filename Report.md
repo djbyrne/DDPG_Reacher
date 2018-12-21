@@ -55,7 +55,10 @@ One of the main appeals of the DDPG algorithms is the simplicity of its implemen
 
 **Updates**
 
-Although the paper
+As seen in the pseudo code adove, the original paper shows that the algorithm performs an update step at each time step. When trying this in my initial experiments the agent was unable to get passed an average score of 1. During my research that other people tried to periodically update the agent, for example every 10 timesteps the agent would 20 update steps. This was in an attempt to update with a larger and more diverse sample. I experimented with several variations of update frequency and iterations. Eventually I tried only updating the agent at the end of an episode for 10 timesteps and this proved to provide the most stable results. I am still unsure why this performed better than simply updating at each timestep as seen in the paper. My theory is that by waiting for the end of the episode there is a more diverse experience buffer to sample from which  improves the stability of the agent. 
+
+**Catastrophic Forgetting**
+A common problem when training neural networks is that convergence and stabilty is not garunteed. This is painfully displayed in the phenomenon known as "catastrophic forgetting". This is when a network continues to improve until it will begin to (sometimes suddenly) deteriorate. This is shown in the graph below.
 
 
 | Layers           |Parameters           |
