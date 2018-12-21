@@ -6,7 +6,7 @@ This implementation used the ddpg pendulum example from the Udacity deep reinfor
 
 The Reacher environment provided an interesting challenge and required several subtle but integral changes to the my initial code in order for the agent to train successfully.
 
-# The environment
+# The Environment
 
 ![Trained Agent][image1]
 
@@ -18,16 +18,19 @@ The observation space consists of 33 variables corresponding to position, rotati
 
 Each action is a vector with four numbers, corresponding to torque applicable to two joints. Every entry in the action vector should be a number between -1 and 1.
 
-# DDPG
+# Algorithm Used - DDPG
 
-I chose to go with DDPG as DeepMinds paper shows that it has very good results in a similar reacher environment https://arxiv.org/pdf/1801.00690.pdf . Here the paper looks at A3C, DDPG and D4PG. The results shows that D4PG drastically outperforms A3C and was followed closely by DDPG.
+I chose to go with DDPG as the DeepMind paper [DeepMind Control Suite](https://arxiv.org/pdf/1801.00690.pdf) shows that it has excellent results in a similar reacher environment. Here the paper looks at A3C, DDPG and D4PG. The results shows that D4PG drastically outperforms A3C and was followed closely by DDPG.
 
+The graph below shows the results of the papers experiments on the Reacher:Hard environment from deepmind. A3C(Orange) DDPG(Light Blue), D4PG(Dark Blue):
 ![Paper Results](images/research.png)
 
 
-DQN introduces a lot of changes to the traditional Q learning algorithm and isn't just replacing the Q table with a neural network.
-As described in Deep Minds groundbreaking paper [Playing Atari with Deep Reinforcement Learning](https://arxiv.org/pdf/1312.5602.pdf) there are 
-several advancements that make this algorithm work. Below I will go through the core techniques used to successfully implement the DQN algorithm.
+I chose to implement DDPG over D4PG for this project as I felt I had a better understanding of the algorithm and was better place for me to begin. This will go through the methodology of DDPG, the experiments and changes I made during training, the results achieved from these experiments and finally my thoughts on future work.
+
+## Methodology
+
+
 
 ## Models
 
