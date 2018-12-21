@@ -63,6 +63,10 @@ A common problem when training neural networks is that convergence and stabilty 
 
 ![Catastrophic Forgetting](images/catastrophic_forgetting.png)
 
+It is still unclear what exactly causes this convergence on a poor policy but is likely a combination of poor hyper-parameters. During my research and experiments I discovered that the samples used during the update step was critical for fixing this issue. By increase the size of my experience replay buffer to 10000000 and my batch size to 512 the agents training stablized. I believe this comes back to the problem seen in my update steps of diverse samples. By increasing the amount of experiences store and the sample size, the agent is able to update and learn on more generalised data. This reduces the possibility of the agent getting stuck in a local minima due to poor experience replay.
+
+
+
 
 | Layers           |Parameters           |
 |:-------------:| :-------------:| 
