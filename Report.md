@@ -65,8 +65,11 @@ A common problem when training neural networks is that convergence and stabilty 
 
 It is still unclear what exactly causes this convergence on a poor policy but is likely a combination of poor hyper-parameters. During my research and experiments I discovered that the samples used during the update step was critical for fixing this issue. By increase the size of my experience replay buffer to 10000000 and my batch size to 512 the agents training stablized. I believe this comes back to the problem seen in my update steps of diverse samples. By increasing the amount of experiences store and the sample size, the agent is able to update and learn on more generalised data. This reduces the possibility of the agent getting stuck in a local minima due to poor experience replay.
 
+** Model Architecture **
 
+The final piece of the puzzle was finding the correct network architecture for the reacher agent. I experimented with both the initial architecture found in the Udacity example which was an MLP with 2 layers of 400 and 300 nodes each with a ReLU layer. Both the Actor and Critic used the same network architecture This model showed promise and was able to learn, but was incredibly slow, taking more than 50 episodes to get past an average score of 1. The next experiment was to use the same architecture found in DeepMinds paper[link] which was the same for the critic but used 300 and 200 nodes respectively for the actore layers. Again, this showed that the agent was learning, but was very slow. This could be that the initial training of the agent was slow but after an initial period would pick up. 
 
+I began to suspect that the agent was unable to accurately assign credit correctly due to the (relative) complexity of the environment. In order to solve this I began experimenting with much larger networks. Eventually I settled on the follow network architecture and provided the best results for this environment.
 
 | Layers           |Parameters           |
 |:-------------:| :-------------:| 
