@@ -1,6 +1,6 @@
 # Intro
 
-This project looks at implementing the Deep Deterministic Policy Gradient (DDPG) algorithm in order to solve the Reacher environment.
+This project looks at implementing the [Deep Deterministic Policy Gradient](https://arxiv.org/pdf/1509.02971.pdf) (DDPG) algorithm in order to solve the Reacher environment.
 
 This implementation used the ddpg pendulum example from the Udacity deep reinforcment learning repository as a foundation and was adapted to suite the Reacher environment. This project can be found [here](https://github.com/udacity/deep-reinforcement-learning/tree/master/ddpg-pendulum)
 
@@ -20,32 +20,33 @@ Each action is a vector with four numbers, corresponding to torque applicable to
 
 # Algorithm Used - DDPG
 
-I chose to go with DDPG as the DeepMind paper [DeepMind Control Suite](https://arxiv.org/pdf/1801.00690.pdf) shows that it has excellent results in a similar reacher environment. Here the paper looks at A3C, DDPG and D4PG. The results shows that D4PG drastically outperforms A3C and was followed closely by DDPG.
+I chose to go with DDPG as the DeepMind paper [DeepMind Control Suite](https://arxiv.org/pdf/1801.00690.pdf)[2] shows that it has excellent results in a similar reacher environment. Here the paper looks at A3C, DDPG and D4PG. The results shows that D4PG drastically outperforms A3C and was followed closely by DDPG.
 
 The graph below shows the results of the papers experiments on the Reacher:Hard environment from deepmind. A3C(Orange) DDPG(Light Blue), D4PG(Dark Blue):
 <br />
 ![Paper Results](images/research.png)
 
 
-I chose to implement DDPG over D4PG as DDPG is more data efficient before 1e7 environment steps[paper]. My resources and amount of time I can afford to spend training my model is significantly less than that of DeepMind, as such I prioritized DDPG as it will train more efficiently when given less training steps.
+I chose to implement DDPG over D4PG as DDPG is more data efficient before 1e7 environment steps[2]. My resources and amount of time I can afford to spend training my model is significantly less than that of DeepMind, as such I prioritized DDPG as it will train more efficiently when given less training steps.
 
 This report will go through the methodology of DDPG, the experiments and changes I made during training, the results achieved from these experiments and finally my thoughts on future work.
 
 ## Methodology
 
-DDPG is an off-policy, actor critic method that performs more like an advanced DQN built for continuous tasks. Although DQN has achieved superhuman performance on a number of environments such as the Atari games, it can only handle discrete and low-dimensional action spaces[ddpg paper]. As such it cant handle continuous action spaces. This problem can be solved by combining the techniques used in DQN with the actor-critic methodology.
+DDPG is an off-policy, actor critic method that performs more like an advanced DQN built for continuous tasks. Although DQN has achieved superhuman performance on a number of environments such as the Atari games, it can only handle discrete and low-dimensional action spaces[1]. As such it cant handle continuous action spaces. This problem can be solved by combining the techniques used in DQN with the actor-critic methodology.
 
 ![DDPG Pseudo Code](images/ddpg_pseudo.png)
 
-As stated previously it is impractical to try and map Q values to state/actions for continuous tasks as Q learning requires an optimization step at each time step. This step is simply too slow for large, unconstrained function approximators and nontrivial action spaces[ddpg paper]. Instead DDPG uses the actor network to maintain the current deterministic policy using the actor function μ(s|θμ) which maps states to the best action. Just like in Q learning, the critic is learned using the Q function Q(s|a) to determine the state/action value. During this calculation the critic takes in the output of the actor as target for training, similar to the approach used in DQN.
+As stated previously it is impractical to try and map Q values to state/actions for continuous tasks as Q learning requires an optimization step at each time step. This step is simply too slow for large, unconstrained function approximators and nontrivial action spaces[1]. Instead DDPG uses the actor network to maintain the current deterministic policy using the actor function μ(s|θμ) which maps states to the best action. Just like in Q learning, the critic is learned using the Q function Q(s|a) to determine the state/action value. During this calculation the critic takes in the output of the actor as target for training, similar to the approach used in DQN.
 
 ![Actor Critic Exampl](https://camo.githubusercontent.com/93fecaeda4aa38d024fa35b8d5e1b13329a9ea21/68747470733a2f2f7777772e73746576656e737069656c626572672e6d652f70726f6a656374732f696d616765732f646470675f747261696e2e676966)
 
 As stated previously, DDPG builds upon much of the methodology used in DQN. As this is an off-policy method, DDPG uses experience replay to store large amounts of timesteps (s,a,r,s') and samples minibatches of these experiences in order to leanr/update the agents networks.
 
-One problem seen in many experiments using Q learning with neural networks is that the traing can be unstable. This is due to the fact that the network being updated Q(s,a|θQ) is also used in calculating the target value [ddpg_paper]. DQN (Mnih et al., 2013) solved this using a target network, this was further improved on by using Double DQN's(https://arxiv.org/abs/1509.06461). DDPG has a different approach to this problem using "soft" target updates instead of directly copying weights [ddpg_paper]. As in DQN, two networks are maintained for both the actor and critic, the local and target network. Instead of directly copying weights at regular intervals, soft updates mixes in 0.01% of the local network into the target network. This makes the network change slowly and greatly improves training stability.
+One problem seen in many experiments using Q learning with neural networks is that the traing can be unstable. This is due to the fact that the network being updated Q(s,a|θQ) is also used in calculating the target value [1]. DQN (Mnih et al., 
+) solved this using a target network, this was further improved on by using Double DQN's[3]. DDPG has a different approach to this problem using "soft" target updates instead of directly copying weights [1]. As in DQN, two networks are maintained for both the actor and critic, the local and target network. Instead of directly copying weights at regular intervals, soft updates mixes in 0.01% of the local network into the target network. This makes the network change slowly and greatly improves training stability.
 
-The final problem associated with continuous action spaced environments is that of exploration. DQN uses an epsilon-greedy approach, that works well for discrete action spaces but is not sufficient for continuous action spaces. Instead DDPG  constructs an exploration policy μ′ by adding noise sampled from a noise process N to our actor policy[ddpg paper]. The noise used here is the Ornstein-Uhlenbeck process (Uhlenbeck & Ornstein, 1930).
+The final problem associated with continuous action spaced environments is that of exploration. DQN uses an epsilon-greedy approach, that works well for discrete action spaces but is not sufficient for continuous action spaces. Instead DDPG  constructs an exploration policy μ′ by adding noise sampled from a noise process N to our actor policy[1]. The noise used here is the Ornstein-Uhlenbeck process (Uhlenbeck & Ornstein, 1930).
 
       μ′(st) = μ(st|θtμ) + N
 
@@ -108,3 +109,13 @@ The obvious next step would be to try to implement the successor of DDPG, Distri
 
 ## Crawler Environment
 With the success of the agent in the reacher environment I attempted to train it on the more advanced crawler environnment. Unfortunately the crawler binary was not able to run when I began training. I am not sure why this is the case and I am waiting for a response from the Udacity team on the issue. Once I get a working copy of the binary I will begin training my DDPG agent on the crawler.
+
+# References
+
+
+[1] Timothy P Lillicrap, Jonathan J Hunt, Alexander Pritzel, Nicolas Heess, Tom Erez, Yuval Tassa, David Silver, and Daan Wierstra. Continuous control with deep reinforcement learning. In Inter- national Conference on Learning Representations, 2016.
+
+[2] Yuval Tassa, Yotam Doron, Alistair Muldal, Tom Erez,
+Yazhe Li, Diego de Las Casas, David Budden, Abbas Abdolmaleki, Josh Merel, Andrew Lefrancq, Timothy Lillicrap, Martin Riedmiller. DeepMind Control Suite. cs.AI, 2018
+
+[3] Hado van Hasselt, Arthur Guez, David Silver. Deep Reinforcement Learning with Double Q-learning. 2016
