@@ -124,5 +124,3 @@ Like most machine learning problems I believe that this agent could be improved 
 
 ## Testing More Complicated Environments
 As well as this I think that the reason that I did not see a big improvement from the additions is down to the fact that the environment itself is quite simple. Due the this, it is possible that the benefits of these improvements are not being seen. I would like to try these methods on a more complicated environment in the future such as the atari games.
-
-
