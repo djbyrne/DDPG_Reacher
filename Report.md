@@ -35,6 +35,8 @@ This report will go through the methodology of DDPG, the experiments and changes
 
 DDPG is an off-policy, actor critic method that performs more like an advanced DQN built for continuous tasks. Although DQN has achieved superhuman performance on a number of environments such as the Atari games, it can only handle discrete and low-dimensional action spaces[ddpg paper]. As such it cant handle continuous action spaces. This problem can be solved by combining the techniques used in DQN with the actor-critic methodology.
 
+![DDPG Pseudo Code](images/ddpg_pseudo.png)
+
 As stated previously it is impractical to try and map Q values to state/actions for continuous tasks as Q learning requires an optimization step at each time step. This step is simply too slow for large, unconstrained function approximators and nontrivial action spaces[ddpg paper]. Instead DDPG uses the actor network to maintain the current deterministic policy using the actor function μ(s|θμ) which maps states to the best action. Just like in Q learning, the critic is learned using the Q function Q(s|a) to determine the state/action value. During this calculation the critic takes in the output of the actor as target for training, similar to the approach used in DQN.
 
 ![Actor Critic Exampl](https://camo.githubusercontent.com/93fecaeda4aa38d024fa35b8d5e1b13329a9ea21/68747470733a2f2f7777772e73746576656e737069656c626572672e6d652f70726f6a656374732f696d616765732f646470675f747261696e2e676966)
@@ -47,11 +49,14 @@ The final problem associated with continuous action spaced environments is that 
 
       μ′(st) = μ(st|θtμ) + N
 
-## Models
+## Experiments and Training
 
-Like I mentioned previously, one of the big changes in how we approach Q learning is the introduction of using a neural network to replace the Q table. Instead of storing every Q value in a look up table corresponding to its state and action, we can use the neural network to approximate the Q value of any state/action pair. This allows us to tackle infinitely more complex tasks that were out of reach for the simple tabular approach.
+One of the main appeals of the DDPG algorithms is the simplicity of its implementation while still providing state of the art results. Although the implementation is simple, fine tuning the architecture and parameters of the agent can still be a difficult and time consuming task. During my implementation of the algorithm I ran into several problems that were eventaully solved by making changes to several key areas.
 
-This base implementation of this project uses a simple 2 layer multi layer perceptron(MLP). The model takes in the 37 state features as input and returns the best Q values for each of our 4 possible actions given the current state as output. We then take the max of these values as our best action. For the base model of this project I kept the same architecture and parameters as the lunar lander excerise in order to get a solid working agent to begin. The base model looks like the following:
+**Updates**
+
+Although the paper
+
 
 | Layers           |Parameters           |
 |:-------------:| :-------------:| 
