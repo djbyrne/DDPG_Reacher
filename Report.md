@@ -101,8 +101,8 @@ I conclusion, DDPG was successfully able to converge on an optimal policy that w
 
 # Future Work
 
-## Furthur Hyperparameter Tuning
-Like most machine learning problems I believe that this agent could be improved to reach a much higher average through hyperparameter tuning. With my limited amount of time to spend of the project I was only able to test 2 variations for each parameter. With more tuning I believe the agent could perform significantly better. Potentially I would like to use something like AuotMl or genetic algorithms to learn the best hyperparameters for this environment.
+## D4PG
+The obvious next step would be to try to implement the successor of DDPG, Distributed Distributional Deterministic Policy Gradient. This is a much more advanced algorithm and has been shown to significantly improve upon DDPG for most tasks under most conditions. 
 
-## Testing More Complicated Environments
-As well as this I think that the reason that I did not see a big improvement from the additions is down to the fact that the environment itself is quite simple. Due the this, it is possible that the benefits of these improvements are not being seen. I would like to try these methods on a more complicated environment in the future such as the atari games.
+## Crawler Environment
+With the success of the agent in the reacher environment I attempted to train it on the more advanced crawler environnment. Unfortunately the crawler binary was not able to run when I began training. I am not sure why this is the case and I am waiting for a response from the Udacity team on the issue. Once I get a working copy of the binary I will begin training my DDPG agent on the crawler.
