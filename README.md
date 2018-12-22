@@ -28,29 +28,36 @@ The environment is considered solved when the average score of all agents in the
 
 ### Setup
 
-1.Create (and activate) a new environment with Python 3.6.
+1. Create (and activate) a new environment with Python 3.6.
 
-Linux or Mac:
-        conda create --name drlnd python=3.6
-        source activate drlnd
-Windows:
-        conda create --name drlnd python=3.6 
-        activate drlnd
+	- __Linux__ or __Mac__: 
+	```bash
+	conda create --name drlnd python=3.6
+	source activate drlnd
+	```
+	- __Windows__: 
+	```bash
+	conda create --name drlnd python=3.6 
+	activate drlnd
+	```
 
+2. Clone the repository (if you haven't already!), and navigate to the `python/` folder.  Then, install several dependencies.
+```bash
+git clone https://github.com/djbyrne/DDPG_Reacher.git
+cd ddpg_reacher
+pip install .
+```
+3.Download the environment from one of the links below.  You need only select the environment that matches your operating system:
 
-2.Download the environment from one of the links below.  You need only select the environment that matches your operating system:
+- **_Twenty (20) Agents_**
+- Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
+- Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
+- Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86.zip)
+- Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86_64.zip)
 
-    - **_Twenty (20) Agents_**
-        - Linux: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Linux.zip)
-        - Mac OSX: [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher.app.zip)
-        - Windows (32-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86.zip)
-        - Windows (64-bit): [click here](https://s3-us-west-1.amazonaws.com/udacity-drlnd/P2/Reacher/Reacher_Windows_x86_64.zip)
-    
-    (_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
+(_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
 
-3. Place the file in the project directory and change the environment path in the notebook
-
-4. Finally, run the setup.py file to install all dependencies for this project
+4. Place the file in the project directory and change the environment path in the notebook DDPG_Reacher.ipynb
 
 ### Instructions
 
