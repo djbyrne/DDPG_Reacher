@@ -44,4 +44,4 @@ The environment is considered solved when the average score of all agents in the
 
 ### Instructions
 
-All code for this project is contained in the jupyter notebook. As such you just need to run the cells in order to see the results.
+All code for this project is contained in the DDPG_Reacher.ipynb notebook. As such you just need to run the cells in order to see the results.
