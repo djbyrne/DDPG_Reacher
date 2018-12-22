@@ -40,6 +40,8 @@ The environment is considered solved when the average score of all agents in the
 
 2. Place the file in the project directory and change the environment path in the notebook
 
+3. Finally, run the setup.py file to install all dependencies for this project
+
 ### Instructions
 
 All code for this project is contained in the jupyter notebook. As such you just need to run the cells in order to see the results.
