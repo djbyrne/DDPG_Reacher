@@ -32,13 +32,13 @@ The environment is considered solved when the average score of all agents in the
 
 	- __Linux__ or __Mac__: 
 	```bash
-	conda create --name drlnd python=3.6
-	source activate drlnd
+	conda create --name ddpg python=3.6
+	source activate ddpg
 	```
 	- __Windows__: 
 	```bash
-	conda create --name drlnd python=3.6 
-	activate drlnd
+	conda create --name ddpg python=3.6 
+	activate ddpg
 	```
 
 2. Clone the repository and install dependencies.
