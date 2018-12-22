@@ -44,7 +44,7 @@ The environment is considered solved when the average score of all agents in the
 2. Clone the repository and install dependencies.
 ```bash
 git clone https://github.com/djbyrne/DDPG_Reacher.git
-cd ddpg_reacher
+cd DDPG_Reacher
 pip install .
 ```
 3.Download the environment from one of the links below.  You need only select the environment that matches your operating system:
